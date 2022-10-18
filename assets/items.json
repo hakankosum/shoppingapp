@@ -1,0 +1,19 @@
+{
+    "data": [
+        {
+            "id": "Gömlek",
+            "image": "https://dfcdn.defacto.com.tr/7/S6804A2_20WN_RD79_01_01.jpg",
+            "price": 120
+        },
+        {
+            "id": "T-shirt",
+            "image": "https://cdn.shopify.com/s/files/1/0020/8355/3361/products/THT-236XX_1_1440x1800.jpg?v=1652709349",
+            "price": 50
+        },
+        {
+            "id": "Pantolon",
+            "image": "https://www.jakamen.com.tr/Uploads/UrunResimleri/thumb/dar-kalip-slim-fit-serili-kot-pantolon-d2a367.jpg",
+            "price": 200
+        }
+    ]
+}
