@@ -26,6 +26,7 @@ class _ProductScreenState extends State<ProductScreen> {
     final String res = await rootBundle.loadString("assets/items.json");
     final itemsData = await json.decode(res);
     _products = itemsData["data"];
+    setState(() {});
   }
 
   @override
@@ -69,42 +70,57 @@ class _ProductScreenState extends State<ProductScreen> {
                       itemBuilder: (context, index) {
                         return Container(
                             margin: EdgeInsets.only(bottom: 1.h),
+                            
                             height: 15.h,
                             color: Colors.blue,
+                            padding: EdgeInsets.only(right: 5.w),
                             child: Row(
+                              
                               children: [
                                 Container(
+                                  margin: EdgeInsets.only(left: 2.h),
+                                  
+
                                   height: 10.h,
                                   width: 10.h,
                                   decoration: BoxDecoration(
+                                    color: Colors.red,
+                                      borderRadius: BorderRadius.circular(20),
                                       image: DecorationImage(
                                           image: NetworkImage(
-                                              _products[index]["image"]))),
+                                              _products[index]["image"]),fit: BoxFit.cover)),
                                 ),
-                                Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Text(
-                                      _products[index]["id"],
-                                      style:
-                                          const TextStyle(color: Colors.black),
-                                    ),
-                                    Text(
-                                      _products[index]["price"].toString() +
-                                          " TL",
-                                      style:
-                                          const TextStyle(color: Colors.black),
-                                    )
-                                  ],
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        _products[index]["id"],
+                                        style:
+                                            const TextStyle(color: Colors.black),
+                                      ),
+                                      Text(
+                                        _products[index]["price"].toString() +
+                                            " TL",
+                                        style:
+                                            const TextStyle(color: Colors.black),
+                                      )
+                                    ],
+                                  ),
                                 ),
                                 Spacer(),
-                                InkWell(
-                                  onTap: () {
-                                    item.addBasket(_products[index]);
+                                Material(
+                                  color: Colors.transparent,
+                                  child: InkWell(
+                                    highlightColor: Colors.white,
                                     
-                                  },
-                                  child: Icon(Icons.shopping_bag),
+                                    onTap: () {
+                                      item.addBasket(_products[index]);
+                                      
+                                    },
+                                    child: Icon(Icons.shopping_bag,size: 40,),
+                                  ),
                                 )
                               ],
                             ));

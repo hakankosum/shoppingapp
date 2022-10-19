@@ -30,13 +30,13 @@ class Item with ChangeNotifier {
     notifyListeners();
   }
   void removeBasket(value) {
-    deleted_item=basket[index]; 
+    deleted_item=basket[value];
+
     
-    basket.removeAt(index);
+    basket.removeAt(value);
+    print(deleted_item.toString());
     
     notifyListeners();
-    
-    print(deleted_item);
   }
 
   double getPrice(){
@@ -49,6 +49,8 @@ class Item with ChangeNotifier {
     return summ;
   }
 
-
+  void removeDeletedItem(){
+    deleted_item={};
+  }
 
 }
