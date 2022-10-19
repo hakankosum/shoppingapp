@@ -19,6 +19,19 @@
             "id": "Mont",
             "image": "https://cdn.cimri.io/image/1200x1200/thenorthfaceerkekmontfiyatlar_181021822.jpg",
             "price": 500
+        },
+        {
+            "id": "Hırka",
+            "image": "https://cdn-gant.akinon.net/products/2020/10/22/21553/938017bc-2779-42e8-bd29-d12879b6ef65_size750x937_quality100_cropCenter.jpg",
+            "price": 200
+        },
+        {
+            "id": "Kaban",
+            "image": "https://cdn.sorsware.com/perspective/ContentImages/Product/2021-2022-sonbahar-kis/12250425-418/hilde-kaban-0425_12250425-418_vizon-vizon_1_buyuk.jpg",
+            "price": 400
         }
+
     ]
 }
+
+
