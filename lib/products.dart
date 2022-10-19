@@ -119,7 +119,13 @@ class _ProductScreenState extends State<ProductScreen> {
                                       item.addBasket(_products[index]);
                                       
                                     },
-                                    child: Icon(Icons.shopping_bag,size: 40,),
+                                    child: Container(
+                                      padding: EdgeInsets.all(8),
+                                      decoration: BoxDecoration(border: Border.all(),
+                                      borderRadius: BorderRadius.circular(10)
+                                      
+                                      ),
+                                      child: Icon(Icons.shopping_cart_outlined,size: 24,)),
                                   ),
                                 )
                               ],
