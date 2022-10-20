@@ -1,5 +1,6 @@
 import 'dart:core';
 
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -41,14 +42,7 @@ class _ProductScreenState extends State<ProductScreen> {
     return Consumer(builder: (BuildContext context, Item item, widget) {
       return Scaffold(
         appBar: AppBar(
-          leading: InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => sepetim()),
-                );
-              },
-              child: Icon(Icons.shopping_basket)),
+          backgroundColor: Colors.black,
           actions: [
             Container(
                 margin: EdgeInsets.only(right: 5.w),
@@ -60,7 +54,7 @@ class _ProductScreenState extends State<ProductScreen> {
           ],
         ),
         body: SizedBox(
-            height: 80.h,
+            height: 90.h,
             width: 100.w,
             child: _products.length > 0
                 ? Container(
@@ -69,44 +63,53 @@ class _ProductScreenState extends State<ProductScreen> {
                       itemCount: _products.length,
                       itemBuilder: (context, index) {
                         return Container(
-                            margin: EdgeInsets.only(bottom: 1.h),
-                            
                             height: 15.h,
-                            color: Colors.blue,
                             padding: EdgeInsets.only(right: 5.w),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey),
+                              color: Colors.black,
+                            ),
                             child: Row(
-                              
                               children: [
                                 Container(
                                   margin: EdgeInsets.only(left: 2.h),
-                                  
-
                                   height: 10.h,
                                   width: 10.h,
-                                  decoration: BoxDecoration(
-                                    color: Colors.red,
-                                      borderRadius: BorderRadius.circular(20),
-                                      image: DecorationImage(
-                                          image: NetworkImage(
-                                              _products[index]["image"]),fit: BoxFit.cover)),
+                                  child: FancyShimmerImage(
+                                    shimmerDuration:
+                                        const Duration(milliseconds: 1000),
+                                    boxFit: BoxFit.cover,
+                                    width: 8.h,
+                                    height: 10.h,
+                                    imageUrl: _products[index]["image"],
+                                    errorWidget: const Image(
+                                        image: NetworkImage(
+                                            "https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg")),
+                                  ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        _products[index]["id"],
-                                        style:
-                                            const TextStyle(color: Colors.black),
-                                      ),
-                                      Text(
-                                        _products[index]["price"].toString() +
-                                            " TL",
-                                        style:
-                                            const TextStyle(color: Colors.black),
-                                      )
-                                    ],
+                                  child: SizedBox(
+                                    height: 4.h,
+                                    
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      
+                                      children: [
+                                        Text(
+                                          _products[index]["id"],
+                                          style: const TextStyle(
+                                              color: Colors.white),
+                                        ),
+                                        Text(
+                                          _products[index]["price"].toString() +
+                                              " TL",
+                                          style: const TextStyle(
+                                              color: Colors.white),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
                                 Spacer(),
@@ -114,18 +117,20 @@ class _ProductScreenState extends State<ProductScreen> {
                                   color: Colors.transparent,
                                   child: InkWell(
                                     highlightColor: Colors.white,
-                                    
                                     onTap: () {
                                       item.addBasket(_products[index]);
-                                      
                                     },
                                     child: Container(
-                                      padding: EdgeInsets.all(8),
-                                      decoration: BoxDecoration(border: Border.all(),
-                                      borderRadius: BorderRadius.circular(10)
-                                      
-                                      ),
-                                      child: Icon(Icons.shopping_cart_outlined,size: 24,)),
+                                        padding: EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                            border: Border.all(),
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Icon(
+                                          Icons.add_shopping_cart_outlined,
+                                          size: 24,
+                                          color: Colors.white,
+                                        )),
                                   ),
                                 )
                               ],
@@ -133,7 +138,36 @@ class _ProductScreenState extends State<ProductScreen> {
                       },
                     ),
                   )
-                :null),
+                : null),
+        bottomNavigationBar: Container(
+          height: 10.h,
+          width: 100.w,
+          child: Container(
+              color: Colors.black,
+              child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => sepetim()),
+                    );
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      (Text(
+                        "Go to Basket",
+                        style: TextStyle(fontSize: 24, color: Colors.white),
+                      )),
+                      SizedBox(
+                        width: 3.w,
+                      ),
+                      Icon(
+                        Icons.shopping_cart_checkout,
+                        color: Colors.white,
+                      )
+                    ],
+                  ))),
+        ),
       );
     });
   }
