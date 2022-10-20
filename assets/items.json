@@ -29,9 +29,21 @@
             "id": "Kaban",
             "image": "https://cdn.sorsware.com/perspective/ContentImages/Product/2021-2022-sonbahar-kis/12250425-418/hilde-kaban-0425_12250425-418_vizon-vizon_1_buyuk.jpg",
             "price": 400
+        },
+        {
+            "id": "Ayakkabı",
+            "image": "https://cdn.cimri.io/image/1000x1000/aracourtyardmavikadnsporayakkabn_636976402.jpg",
+            "price": 500
+        },
+        {
+            "id": "Ceket",
+            "image": "https://sarar.com/sarar-jam-siyah-blazer-ceket-4388-regular-fit-ceket-sarar-3774-43-K.jpg",
+            "price": 350
+        },
+        {
+            "id": "Sweatshirt",
+            "image": "https://cdn.dsmcdn.com/ty511/product/media/images/20220817/19/161728461/546296651/1/1_org_zoom.jpg",
+            "price": 350
         }
-
     ]
 }
-
-
